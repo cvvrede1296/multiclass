@@ -1,0 +1,131 @@
+%legendremacros
+
+\makeatletter
+\def\legendre@dash#1#2{\hb@xt@#1{%
+  \kern-#2\p@
+  \cleaders\hbox{\kern.5\p@
+    \vrule\@height.2\p@\@depth.2\p@\@width\p@
+    \kern.5\p@}\hfil
+  \kern-#2\p@
+  }}
+\def\@legendre#1#2#3#4#5{\mathopen{}\left(
+  \sbox\z@{$\genfrac{}{}{0pt}{#1}{#3#4}{#3#5}$}%
+  \dimen@=\wd\z@
+  \kern-\p@\vcenter{\box0}\kern-\dimen@\vcenter{\legendre@dash\dimen@{#2}}\kern-\p@
+  \right)\mathclose{}}
+\newcommand\legendre[2]{\mathchoice
+  {\@legendre{0}{1}{}{#1}{#2}}
+  {\@legendre{1}{.5}{\vphantom{1}}{#1}{#2}}
+  {\@legendre{2}{0}{\vphantom{1}}{#1}{#2}}
+  {\@legendre{3}{0}{\vphantom{1}}{#1}{#2}}
+}
+\def\dlegendre{\@legendre{0}{1}{}}
+\def\tlegendre{\@legendre{1}{0.5}{\vphantom{1}}}
+\makeatother
+
+%short hands because we cannot decide on notation
+\newcommand{\norm}[2]{N_{#1:#2}}
+
+\def\setof#1{\mathord{\left\lbrace{#1}\right\rbrace}}
+\def\floor#1{\mathord{\left\lfloor{#1}\right\rfloor}}
+\def\ceil#1{\mathord{\left\lceil{#1}\right\rceil}}
+\def\abs#1{\mathord{\left\vert{#1}\right\vert}}
+
+% algorithm names:
+\def\goodprime{\operatorname{GoodPrime}\nolimits}
+\def\twistedsquareroot{\operatorname{TwistedSquareRoot}\nolimits}
+\def\squareroot{\operatorname{SquareRoot}\nolimits}
+\def\unitsfunction{\operatorname{Units}\nolimits}
+\def\enoughcharacters{\operatorname{EnoughCharacters}\nolimits}
+
+\def\fieldn{\QQ(\sqLprime{1},\ldots,\sqLprime{n})}
+\def\fieldbeforen{\QQ(\sqLprime{1},\ldots,\sqLprime{n-1})}
+\def\ringn{\ZZ[\sqLprime{1},\ldots,\sqLprime{n}]}
+\def\ringm{\ZZ[\sqLprime{1},\ldots,\sqLprime{m}]}
+\def\ringbeforem{\ZZ[\sqLprime{1},\ldots,\sqLprime{m-1}]}
+\def\ringbeforen{\ZZ[\sqLprime{1},\ldots,\sqLprime{n-1}]}
+\def\ringofintegers{\calO}
+
+% letters
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\units}[1]{\calO_{#1}^\times}
+\newcommand{\unitssq}[1]{(\calO_{#1}^\times)^2}
+%\newcommand{\Zmod}[1]{\mathbb{Z}/#1\mathbb{Z}}
+\newcommand{\Zmod}[1]{\mathbb{Z}/#1}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\dual}{\vee}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fP}{\mathfrak{P}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\Isub}[1]{\mathcal{I}_{#1}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\Rorder}{\mathcal{R}}
+\newcommand{\Sorder}{\mathcal{S}}
+\newcommand{\LL}{L}
+\newcommand{\UL}{U_L}
+\newcommand{\K}[1]{K_{#1}}
+\newcommand{\Q}[1]{Q_{#1}}
+\newcommand{\defined}{T}
+
+\newcommand{\qunit}[1]{\varepsilon_{#1}}
+\newcommand{\sig}[1]{\sigma_{#1}}
+\newcommand{\qchar}[1]{\chi_{#1}}
+\newcommand{\uroot}[1]{\mu(#1)}
+
+\newcommand{\rels}[1]{\mathcal{R}el(#1)}
+\newcommand{\rel}[2]{\mathcal{R}_{#1}(#2)}
+
+%subgroup of quadratic units of a MQ field
+\newcommand{\Quadunits}[1]{Q_{#1}}
+
+%multquad field dimensions and adjoined primes
+\newcommand{\NN}{N}
+\newcommand{\nn}{n}
+\newcommand{\Lprime}[1]{d_{#1}}
+\newcommand{\sqLprime}[1]{\sqrt{d_{#1}}}
+\newcommand{\class}[1]{\mathcal{C}l_{#1}}
+\newcommand{\pideals}[1]{\mathcal{P}(#1)}
+
+
+%products of adjoined primes generating the quadratic subfields
+\newcommand{\qprime}[1]{d_{#1}}
+\newcommand{\sqprime}[1]{\sqrt{d_{#1}}}
+\newcommand{\ind}{J}
+
+%dual basis
+\newcommand{\dualbasis}[1]{{#1}^{\vee}}
+
+
+%basis of an ideal
+\newcommand{\be}[1]{\omega_{#1}}
+
+%operators
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\appLog}{ApproxLog}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\id}{id}
+
+%theorems and lemmas
+%\newtheorem{definition}{Definition}
+%\newtheorem{lemma}{Lemma}
+\newtheorem{heuristic}[equation]{Heuristic}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{corollary}{Corollary}
+
+%\theoremstyle{plain}
+\newtheorem{mythm}{Theorem}[section]
+\newtheorem{mylma}[mythm]{Lemma}
+\newtheorem{myprop}[mythm]{Proposition}
+\newtheorem{mydef}[mythm]{Definition}
+\newtheorem{mycor}[mythm]{Corollary}
+\newtheorem{mycon}[mythm]{Conjecture}

@@ -1,0 +1,56 @@
+\section{The Algorithm}
+\label{sec:alg}
+
+\subsection{The algorithm}
+\begin{algorithm}[t]
+\DontPrintSemicolon
+    \caption{{\rm MQClassGroup}($\LL$)}
+    \label{alg:mqpip}
+    \KwIn{Real multiquadratic field $\LL$}
+    \KwResult{$\class \LL$}
+        \If{$[\LL:\QQ] = 1$}{
+            \Return \hbox{some error}
+          }
+        \If{$[\LL:\QQ] = 2$}{
+            \Return {\rm QClassGroup}($\LL$)}
+        $\sigma,\tau\gets \hbox{distinct non-identity automorphisms of $\LL$}$\;
+        \For{$\ell \in \{\sigma,\tau,\sigma\tau\}$}{
+            $K_\ell\gets \hbox{fixed field of $\ell$}$\;
+            $\rels {\K \ell},\class {K_\ell} \leftarrow {\rm MQClassGroup}(\K \ell)$\;
+                }
+        $U \leftarrow \rels {\K \sigma} \cup \rels {\K \tau} \cup \sigma (\rels {\K {\sigma\tau}})$\;
+        $\rels \LL \leftarrow {\rm findSquares}(U)$\;
+        \Return ${\rels \LL, {\rm ClassGroup}(\rels \LL)}$\;
+\end{algorithm}
+
+\subsection{Heuristic running time}
+
+\subsection{Open questions}
+{\bf Q3: What happens to $\rels \LL$ if $\sigma$ is applied.\\
+A3: Simple linear transformation of the relations (since we can compute $\sigma (\mathfrak{p})$ for all prime ideals)\\
+\noindent
+Q4: Are there precision issues?\\
+A4: Since we are not dealing with embeddings, I don't see any issues.\\
+\noindent
+Q5: I still need to clarify how ${\rm findSquares}$ works.\\
+A5:I think since all relations are essentially linear relations and squareroot of the 
+relation in the quadratic fields, you only have to compute the characters for the relations in the 
+quadratic fields and the you can just take linear combinations for the rest.
+You get a theorem like Theorem 5.2 of~\cite{DBLP:conf/eurocrypt/BauchBVLV17}.\\
+\noindent
+Q6: This algorithm implies that the largest prime you need is the the largest prime of the largest quadratic field.
+given the adjoined squareroots, the largest discriminant and therefor prime bound can be calculated.
+This should be usable somehow.\\
+\noindent
+Q7: It also seems that for the all of one example I tried, the 
+"The discriminant of a multiquadratic field is the product of the discriminant of its quadratic subfields".
+This might be dependent on which squares are adjoined, but might be something to look into.\\
+A7: This might be only for $1 \bmod 4$ primes? Or maybe not?\\
+\noindent
+Q8: Can the Biasse SAC 2017 preprocessing paper be used to make a class group precomputation to 
+make~\cite{DBLP:conf/eurocrypt/BauchBVLV17} even faster? But this is only if everything works.\\
+\noindent
+Q9: There are still statements in Kubota~\cite{kubota1956} that I think could help, 
+or at least should be referenced for completeness sake.
+However, the German is too confusing for a novice.
+}

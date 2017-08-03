@@ -1,0 +1,103 @@
+\documentclass[a4paper,runningheads]{llncs}
+
+\newif\ifpublic
+\publictrue
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{blkarray}
+\usepackage{layouts}
+\usepackage{graphicx}
+\usepackage{etex}
+\usepackage{subfig}
+\usepackage[vlined,ruled,linesnumbered,resetcount,algosection]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{multirow}
+
+\usepackage{xcolor}
+\definecolor{linkcolor}{rgb}{0.65,0,0}
+\definecolor{citecolor}{rgb}{0,0.4,0}
+\definecolor{urlcolor}{rgb}{0,0,0.65}
+\usepackage[colorlinks=true, linkcolor=linkcolor, urlcolor=urlcolor, citecolor=citecolor]{hyperref}
+
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+\numberwithin{algocf}{section}
+
+\input{macros}
+
+\numberwithin{theorem}{section}
+\numberwithin{lemma}{section}
+\numberwithin{corollary}{section}
+\numberwithin{mythm}{section}
+
+% XXX: effort to improve algorithm naming; does not work yet:
+\makeatletter 
+\g@addto@macro{\@algocf@init}{\relax
+  \SetKwInOut{Parameter}{Parameters}\relax
+  \SetKwInOut{Input}{Input}\relax
+  \SetKwInOut{Output}{Output}\relax
+} 
+\makeatother
+
+\title{Fast multiquadratic classgroup computation}
+
+\ifpublic
+\author{
+    Jean-Francois Biasse\inst{1}
+  \and
+    Christine~van~Vredendaal\inst{2}}
+
+  \institute{
+  University of South Florida\\	
+  Department of Mathematics and Statistics, \\
+  4020 E Fowler Avenue, Tampa, Florida, USA 33620\\
+  \email{biasse@lix.polytechnique.fr}\\[\baselineskip]
+  \and
+  Department of Mathematics and Computer Science\\
+  Technische Universiteit Eindhoven,
+  P.O. Box 513, 5600 MB Eindhoven, NL\\
+  \email{c.v.vredendaal@tue.nl}
+  }
+\authorrunning{J.~F.~Biasse \& C.~van Vredendaal}
+\else
+\author{ }
+\institute{ }
+\fi
+
+\begin{document}
+
+\maketitle
+
+\ifpublic
+\begingroup
+\makeatletter
+\def\@thefnmark{} \@footnotetext{\relax
+Author list in alphabetical order; see
+\url{https://www.ams.org/profession/leaders/culture/CultureStatement04.pdf}.
+This work was supported by the Netherlands Organisation for Scientific Research
+(NWO)  under  grants  613.001.011 and 639.073.005 and other stuff?
+Calculations  were  carried  out  on  the  Saber
+cluster of the Cryptographic Implementations group at Technische  Universiteit  Eindhoven.
+}
+\endgroup
+\fi
+
+\begin{abstract}
+Should have an abstract.
+\\[7pt]
+\textbf{Keywords:}
+multiquadratic fields
+\end{abstract}
+
+\input intro
+\input background
+\input properties
+\input algorithm
+\input results
+
+\bibliographystyle{plain}
+\bibliography{bib}
+
+\end{document}

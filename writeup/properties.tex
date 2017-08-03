@@ -1,0 +1,145 @@
+\section{Theorems and proofs and properties needed for the algorithm}
+\label{sec:props}
+
+\subsection{Relation subfield equation}
+Let $\class {\LL}, \class {\K \sigma}, \class {\K \tau}, \class {\K {\sigma\tau}}$
+be the classgroups of respectively a multiquadratic field $\LL$ and its $3$
+(multi)-quadratic subfields as defined before.
+Then we have a natural mapping $\phi: \class {\K \sigma}\times \class {\K \tau}\times \class {\K {\sigma\tau}} \rightarrow \class {\LL}$
+defined by
+$$
+\phi([\Isub \sigma]_{\K {\sigma}},[\Isub \tau]_{\K {\tau}},[\Isub {\sigma\tau}]_{\K {\sigma\tau}}) = [(\Isub \sigma \Isub \tau \Isub {\sigma\tau})\mathcal{O}_\LL]_\LL
+$$
+where $\Isub \ell$ is an ideal of $\K \ell$ for $\ell \in \{\sigma, \tau, \sigma\tau\}$ and $[\cdot]_\ell$ is a 
+function that maps an ideal to its representative in the classgroup of $\ell$.
+
+\begin{mylma}[\cite{Sime95}]
+The kernel and cokernel of the map $\phi$ defined above are elementary 2-groups.
+\end{mylma}
+
+\noindent
+{\bf Q1: does this hold for index 2 multiquadratic subfields of a multiquadratic field?\\
+A1: do we even need it? I don't think so.}
+
+\begin{mydef}
+Let $\rels {\LL}, \rels {\K \sigma}, \rels {\K \tau}, \rels {\K {\sigma\tau}}$
+Then we have a natural mapping $\psi: \rels {\K \sigma}\times \rels {\K \tau}\times \rels {\K {\sigma\tau}} \rightarrow \rels {\LL}$
+defined by
+$$
+\psi(\rel {\K \sigma} {\Isub \sigma}, \rel {\K {\tau}} {\Isub \tau},\rel {\K {\sigma\tau}} {\Isub {\sigma\tau}} 
+= \rel {\LL} {(\Isub \sigma \Isub \tau \Isub {\sigma\tau})\mathcal{O}_\LL}
+$$
+where $\Isub \ell$ is a \textit{principal} ideal of $\K \ell$ for $\ell \in \{\sigma, \tau, \sigma\tau\}$.
+\end{mydef}
+
+In other words the map $\psi$ takes relations of the subfields of $\LL$ and 
+maps them to relations in $\LL$.
+We now look at what that mapping looks like.
+
+\begin{mythm}
+Let $\LL = \fieldn$ be a multiquadratic field.
+Let $\K \sigma$ be a (multi)-quadratic subfield fixed by $\sigma$.
+Without loss of generality assume $[\LL:\K \sigma] = 2$.
+Let $\rel {\K \sigma} {(\alpha)} = (\alpha, \vec e)$ be a relation of $\K \sigma$.
+Then $(\alpha, \vec e') = \rel {\LL} {(\alpha)}$ is a relation of $\LL$
+with $\vec e' = (e_1\vec f_1|e_2\vec f_2|\dots|e_B\vec f_B)$, 
+where $\vec f_i$ are the ramification indices such that 
+prime ideals $\mathfrak{p}_i$ of $\LL$ factor as 
+$\prod_{f_j \in \vec f_i}\mathfrak{P}_j^{f_j}$.
+\end{mythm}
+\begin{proof}
+Suppose for $\alpha \in \K \sigma$ we have the relation given by
+
+\[(\alpha) = \prod_{1\leq i \leq B} \mathfrak{p}_i^{e_i},\]
+
+where $B$ is the cardinality of the factor base of $\K \sigma$ and
+$\mathfrak{p}_i$ its prime ideals.
+Then
+
+\[\norm {\K \sigma} {\QQ}(\alpha) = \prod_{1\leq i \leq b} p_i^{e'_i},\]
+
+where $b$ is the number of different primes that the prime ideals lie over.
+
+Then because we have $\alpha \in \LL$ and $[\LL:\K \sigma] = 2$
+
+\[\norm {\LL} {\QQ}(\alpha) = \prod_{1\leq i \leq B} p_i^{2e'_i},\]
+
+which means that $\alpha$ is $B$-smooth in $\LL$.
+We also know that for each prime ideal $\mathfrak{p}_i \in \K \sigma$ holds 
+
+\[\mathfrak{p}_i\mathcal{O}_\mathcal{\LL} = \prod_{1\leq j \leq B'}\mathfrak{P}_j^{f_j},\]
+
+where the $\mathfrak{P}_j$ are the prime ideals of $\LL$ that lie
+over $\mathfrak{p}_i$ and the $f_j$ are the ramification indices.
+Let $\vec f_i$ be the vector of ramification indices for $\mathfrak{p}_i$.
+From this follows
+
+\begin{eqnarray*}
+(\alpha) &=& \prod_{1\leq i \leq B} \mathfrak{p}_i^{e_i} \\
+&=& \prod_{1\leq i \leq B} \prod_{1\leq j \leq B'} \mathfrak{P}_j^{e_i f_j}.
+\end{eqnarray*}
+
+Therefore $(\alpha, (e_1\vec f_1|e_2\vec f_2|\dots|e_B\vec f_B))$ is a 
+relation in $\LL$.
+\qed
+\end{proof}
+
+
+
+\noindent
+{\bf Q2: are all primes unramified in multiquadratic fields?\\
+A2: seems to be the case, is this easy to see/show? maybe only for specific primes\\
+TODO: simplify the proof if this is the case.}
+
+
+
+\begin{mycor}
+The set $U = \rels {\K \sigma} \cup \rels {\K \tau} \cup \rels {\K {\sigma\tau}}$ 
+covers all relations that result from pricipal ideals in the subgroup
+$\pideals {\K \sigma} \times \pideals {\K \tau} \times \pideals {\K \sigma\tau}$ 
+of $\pideals {\LL}$.
+\end{mycor}
+
+\begin{mylma}
+\label{lemma:squares}
+Let $\LL$ be a real multiquadratic field and let
+$\sigma,\tau$ be distinct non-identity automorphisms of $\LL$.
+Define $\sigma\tau = \sigma \circ \tau$.
+For $\ell \in \{\sigma,\tau,\sigma\tau\}$
+let $\K \ell$ be the subfield of $\LL$ fixed by $\ell$.
+Define $U = \rels {\K \sigma} \cup \rels {\K \tau} \cup \sigma (\rels {\K {\sigma\tau}})$.
+Here $\sigma (\rels {\K {\sigma\tau}}) = \bigcup_{(\alpha, \vec e) \in \rels {\K {\sigma\tau}}} \rel {\K {\sigma\tau}} {\sigma (\alpha)}$.\\
+Then
+\[(\rels \LL)^2 \leq U \leq \rels \LL,\]
+where $(\rels \LL)^2$ denotes the relations that span $(\class \LL)^2$.
+\end{mylma}
+\begin{proof}
+The relations in $\rels {\K \sigma},\rels {\K \tau}$ and $\rels {\K {\sigma\tau}}$
+span respectively the principal ideals in $\pideals {\K \sigma},
+\pideals {\K \tau}$ and $\pideals {\K {\sigma\tau}}$,
+which in turn are subgroups of $\pideals {\LL}$.
+The automorphism $\sigma$ on $\pideals {\K {\sigma\tau}}$
+preserves $\pideals {\K {\sigma\tau}}$, so $\sigma (\pideals {\K {\sigma\tau}})$
+is also a subgroup of $\pideals {\LL}$.
+From this the second inclusion follows.
+
+For the first inclusion, let $\mathfrak{a} = (\alpha) \in \pideals \LL$ and
+$(\alpha, \vec e)$ its corresponding relation in $\rels \LL$.
+Then $\norm \LL {\K \ell}(\mathfrak{a}) \in \pideals {\K \ell}$ for $\ell \in \{\sigma,\tau,\sigma\tau\}$.
+Each non-identity automorphism of $\LL$ has order $2$,
+so in particular each $\ell\in\setof{\sigma,\tau,\sigma\tau}$
+has order $2$ (if $\sigma\tau$ is the identity
+then $\sigma=\sigma\sigma\tau=\tau$, contradiction),
+so $\norm\LL{\K\ell}(\mathfrak{a})=(\alpha\cdot \ell(\alpha))\ringofintegers_{\K\ell}$.
+We also have that holds (see~\cite{DBLP:conf/eurocrypt/BauchBVLV17})
+$$
+\frac{\norm \LL {\K \sigma}(\alpha)\norm \LL {\K \tau}(\alpha)}
+{\sigma(\norm \LL {\K {\sigma\tau}}(\alpha))}
+= \frac{\alpha\cdot\sigma(\alpha)\cdot \alpha\cdot\tau(\alpha)}{\sigma (\alpha\cdot\sigma\tau(\alpha))} = \alpha^2.
+$$
+Hence $\alpha^2$ is a linear combination of relations in
+$\rels {\K \sigma}, \rels {\K \tau}$ and $\sigma (\rels {\K {\sigma\tau}})$.
+This holds for each $(\alpha) \in \pideals \LL$,
+so $(\rels \LL)^2$ is a subgroup of $U$.
+\qed
+\end{proof}
